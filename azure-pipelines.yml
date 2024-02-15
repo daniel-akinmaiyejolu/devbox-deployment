@@ -13,3 +13,15 @@ steps:
   - task: TerraformInstaller@2
     inputs:
       terraformVersion: 'latest'
+  
+  - task: TerraformCLI@2
+    displayName: Terraform Init
+    inputs:
+      command: 'init'
+      backend: 'azurerm'
+      backendAzureRmResourceGroupName: 'rg-uks-velocity-team2-001'
+      backendAzureRmSubscriptionId: '3af0f5b2-c721-42d7-96ab-0831a6f67bab'
+      backendAzureRmStorageAccountName: 'azdevbox'
+      backendAzureRmContainerName: 'terraformstate'
+      backendAzureRmKey: 'terraform.tfstate'
+      allowTelemetryCollection: true

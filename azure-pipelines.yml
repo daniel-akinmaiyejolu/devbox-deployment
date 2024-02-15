@@ -9,7 +9,13 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-  - task: TerraformInstaller@2
-    inputs:
-      terraformVersion: 'latest'
+stages:
+  - stage: Terraform_Plan
+    displayName: TfPlan
+    jobs:
+    - job: Tfplan
+      steps:
+        - task: TerraformInstaller@2
+        displayName: Install teraaform
+        inputs:
+          terraformVersion: 'latest'

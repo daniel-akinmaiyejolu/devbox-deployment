@@ -16,6 +16,6 @@ stages:
     - job: Tfplan
       steps:
         - task: TerraformInstaller@2
-        displayName: Install teraaform
-        inputs:
-          terraformVersion: 'latest'
+          displayName: Install teraaform
+          inputs:
+            terraformVersion: 'latest'

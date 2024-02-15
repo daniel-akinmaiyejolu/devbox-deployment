@@ -8,9 +8,10 @@ terraform {
 }
  
 provider "azurerm" {
-  skip_provider_registration = true 
-  features {
-  }
+  features {}
+  tenant_id                  = "b295a2ad-c89a-46e0-ba7f-fcffc56125b5"
+  skip_provider_registration = true
+ 
 }
  
 data "azurerm_resources" "rg1" {  

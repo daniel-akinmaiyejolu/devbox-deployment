@@ -32,3 +32,11 @@ stages:
             backendAzureRmKey: 'terraform.tfstate'
             allowTelemetryCollection: true
 
+        - task: TerraformCLI@2
+          displayName: Terraform plan
+          inputs:
+            command: 'plan'
+            providerAzureRmSubscriptionId: '3af0f5b2-c721-42d7-96ab-0831a6f67bab'
+            allowTelemetryCollection: true
+
+

@@ -25,6 +25,7 @@ stages:
           inputs:
             command: 'init'
             backend: 'azurerm'
+            backendServiceArm: "Anthill Mob Co(3af0f5b2-c721-42d7-96ab-0831a6f67bab)"
             backendAzureRmResourceGroupName: 'rg-uks-velocity-team2-001'
             backendAzureRmSubscriptionId: '3af0f5b2-c721-42d7-96ab-0831a6f67bab'
             backendAzureRmStorageAccountName: 'azdevbox'
@@ -37,6 +38,7 @@ stages:
           inputs:
             command: 'plan'
             providerAzureRmSubsciptionId: "3af0f5b2-c721-42d7-96ab-0831a6f67bab"
+            environmentServiceName: "Anthill Mob Co(3af0f5b2-c721-42d7-96ab-0831a6f67bab)"
             allowTelemetryCollection: true
 
 

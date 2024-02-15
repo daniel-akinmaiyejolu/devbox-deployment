@@ -15,7 +15,7 @@ stages:
     jobs:
     - job: Tfplan
       steps:
-        - task: TerraformInstaller@2
+        - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
           displayName: Install teraaform
           inputs:
             terraformVersion: 'latest'

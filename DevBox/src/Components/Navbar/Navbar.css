@@ -1,0 +1,62 @@
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 120px;
+  color: white;
+}
+
+.nav-background{
+  height: 7%;
+  width: 100%;
+  float: left;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: none;
+  position: fixed;
+}
+.nav-logo{
+  height: 7%;
+  width: 3%;
+  float: left;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: none;
+  position: fixed;
+}
+.user-icon{
+  height: 6%;
+  width: 3%;
+  float: right;
+  top: 2px;
+  right: 5px;
+  padding: none;
+  position: fixed;
+  z-index: 1;
+}
+
+.email{
+  height: 6%;
+  width: 4%;
+  float: right;
+  top: 10px;
+  right: 110px;
+  padding: none;
+  position: fixed;
+  z-index: 1;
+}
+
+.notification-icon{
+  height: 5%;
+  width: 2%;
+  float: right;
+  top: 3px;
+  right: 170px;
+  padding: none;
+  position: fixed;
+  z-index: 1;
+}

@@ -5,6 +5,10 @@
 
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
+import DevNavBar from "../Navbar/NavBar.jsx"
+import white_logo from '../../assets/white-logo.png'
+import './Style.css';
+
 
 import { useIsAuthenticated } from "@azure/msal-react";
 import { SignInButton } from "./SignInButton";
@@ -19,9 +23,9 @@ export const PageLayout = (props) => {
 
   return (
     <>
-      <Navbar bg="primary" variant="dark" className="navbarStyle">
+      <Navbar  variant="dark" className="navbarStyle">
         <a className="navbar-brand" href="/">
-          Microsoft Identity Platform
+        <img src={white_logo} className='nav-logo' alt="" />
         </a>
         <div className="collapse navbar-collapse justify-content-end">
           {isAuthenticated ? <SignOutButton /> : <SignInButton />}
@@ -31,8 +35,7 @@ export const PageLayout = (props) => {
       <br />
       <h5>
         <center>
-          Welcome to the Microsoft Authentication Library For JavaScript -
-          React SPA Tutorial
+          Welcome to Azure DevBox
         </center>
       </h5>
       <br />

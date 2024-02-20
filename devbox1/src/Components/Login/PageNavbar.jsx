@@ -5,10 +5,8 @@
 
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
-import DevNavBar from "../Navbar/NavBar.jsx"
 import white_logo from '../../assets/white-logo.png'
 import './Style.css';
-
 
 import { useIsAuthenticated } from "@azure/msal-react";
 import { SignInButton } from "./SignInButton";
@@ -18,12 +16,12 @@ import { SignOutButton } from "./SignOutButton";
  * Renders the navbar component with a sign in or sign out button depending on whether or not a user is authenticated
  * @param props
  */
-export const PageLayout = (props) => {
+export const PageNavbar = (props) => {
   const isAuthenticated = useIsAuthenticated();
 
   return (
     <>
-      <Navbar  variant="dark" className="navbarStyle">
+      <Navbar variant="dark" className="navbarStyle">
         <a className="navbar-brand" href="/">
         <img src={white_logo} className='nav-logo' alt="" />
         </a>

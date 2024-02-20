@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
+import { PageNavbar } from './Components/Login/PageNavbar';
+import { loginRequest } from './authConfig'
+import { callMsGraph } from './graph';
+import { ProfileData } from './Components/Login/ProfileData';
 
-  import { PageLayout } from './Components/Login/PageLayout';
-  import { loginRequest } from './authConfig'
-  import { callMsGraph } from './graph';
-  import { ProfileData } from './Components/Login/ProfileData';
+import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from '@azure/msal-react';
 
-  import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from '@azure/msal-react';
+import './App.css';
 
-  import './App.css';
-
-  import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 
   /**
 * Renders information about the signed-in user or a button to retrieve data about the user
@@ -67,10 +66,10 @@ const MainContent = () => {
 
 export default function App() {
   return (
-      <PageLayout>
+      <PageNavbar>
           <center>
               <MainContent />
           </center>
-      </PageLayout>
+      </PageNavbar>
   );
 }

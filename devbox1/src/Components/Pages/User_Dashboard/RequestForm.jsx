@@ -1,56 +1,38 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Style.css';
+import { useRequestContext } from './RequestContext';
 
 function Popup(props) {
-    const [environmentName, setEnvironmentName] = useState('');
-    const [environmentType, setEnvironmentType] = useState('dev');
-    const [service, setService] = useState('Virtual Machine');
-    const [tier, setTier] = useState('Low');
-    const [subscriptionId, setSubscriptionId] = useState('');
+  const { state, handleSubmit } = useRequestContext();
+  const [environmentName, setEnvironmentName] = useState('');
+  const [environmentType, setEnvironmentType] = useState('dev');
+  const [service, setService] = useState('Virtual Machine');
+  const [tier, setTier] = useState('Low');
+  const [subscriptionId, setSubscriptionId] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        const requestData = {
-            environmentName,
-            environmentType,
-            service,
-            tier,
-            subscriptionId,
-            requestDate: new Date().toISOString(),
-            approvalStatus: 'pending'
-        };
-    
-        try {
-            // Send the form data to the backend server for processing
-            const response = await fetch('http://localhost:5000/submit-request', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestData)
-            });
-    
-            if (response.ok) {
-                // Request successful, handle accordingly (e.g., show success message)
-                console.log('Request submitted successfully!');
-                // Optionally, you can close the popup or show a success message
-                props.setTrigger(false);
-            } else {
-                // Request failed, handle accordingly (e.g., show error message)
-                console.error('Failed to submit request:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Error submitting request:', error.message);
-        }
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const requestData = {
+      environmentName,
+      environmentType,
+      service,
+      tier,
+      subscriptionId,
+      requestDate: new Date().toISOString(),
+      approvalStatus: 'pending'
     };
-    
+    handleSubmit(requestData);
+  };
 
     return (props.trigger) ? (
         <div className='popup'>
             <div className='popup-inner'>
                 <button className='close-btn' onClick={() => props.setTrigger(false)}>x</button>
                 <h2>Request New Environment</h2>
+                {state.loading && <p>Sending request...</p>}
+          {state.success && <p>Request submitted successfully!</p>}
+          {state.error && <p>Error: {state.error}</p>}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="name">Environment Name:</label>

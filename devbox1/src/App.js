@@ -6,6 +6,7 @@ import { callMsGraph } from './graph';
 import { ProfileData } from './Components/Login/ProfileData';
 import { FaTrash } from 'react-icons/fa';
 import { FaCog } from 'react-icons/fa';
+import { RequestContextProvider } from './Components/Pages/User_Dashboard/RequestContext';
 
 
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from '@azure/msal-react';
@@ -107,10 +108,12 @@ const MainContent = () => {
 export default function App() {
     const [graphData, setGraphData] = useState(null);
   return (
+    <RequestContextProvider>
       <PageNavbar>
           <center>
               <MainContent setGraphData={setGraphData}/>
           </center>
       </PageNavbar>
+      </RequestContextProvider>
   );
 }

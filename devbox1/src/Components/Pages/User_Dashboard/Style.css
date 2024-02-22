@@ -1,0 +1,79 @@
+.popup {
+    position: fixed;
+    top: 50%; /* Center the popup vertically */
+    left: 50%; /* Center the popup horizontally */
+    transform: translate(-50%, -50%); /* Center the popup perfectly */
+    width: auto; /* Let the width adjust to content */
+    max-width: 80%; /* Limit the maximum width */
+    background-color: black;
+    z-index: 999; /* Ensure the popup is above other elements */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds viewport height */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add a shadow for depth */
+    border: none; /* Remove the border */
+    text-align: left;
+}
+
+.popup-inner {
+    padding: 16px; /* Add some padding */
+    background-color: white;
+}
+
+.popup-inner .close-btn {
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+    color: black;
+}
+
+.popup-inner .close-btn:hover {
+    color: red; /* Change the color on hover */
+}
+
+button.open-btn {
+    position: fixed;
+    top: 50%;
+    left: 20px; /* Adjust the left position */
+    transform: translateY(-50%);
+    z-index: 999; /* Ensure the button is above other elements */
+}
+
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.popup .form-group {
+    margin-bottom: 15px; /* Increase the margin to add space */
+}
+
+.popup .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.submit-button {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove border */
+    color: white; /* White text */
+    padding: 12px 24px; /* Padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Display as inline block */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 6px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  

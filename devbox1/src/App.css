@@ -36,3 +36,39 @@
     transform: rotate(360deg);
   }
 }
+
+.flex-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2); /* Add box-shadow with spread radius */
+}
+
+.plus-icon {
+  font-size: 20px;
+  line-height: 24px;
+  margin-right: 5px;
+  border-radius: 50%;
+  font-weight: bold;
+  color: #27592D;
+}
+
+.btn-text {
+  font-size: 16px;
+}
+
+.delete-button {
+  margin-left: 10px; /* Adjust margin to position the button */
+}
+
+.settings-button {
+  margin-left: 10px; /* Adjust margin to position the button */
+}

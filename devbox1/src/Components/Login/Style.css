@@ -1,5 +1,24 @@
 /* Navbar.css */
 .navbarStyle {
     background-color: #27592D; /* Your desired color */
+    width: 100%;
   }
   
+  .navbar-brand {
+    margin-right: auto; /* Push the brand/logo to the left */
+  }
+  
+  .navbar-brand img {
+    height: 40px; /* Set the height of the logo */
+    width: 40px; /* Let the width adjust according to the height */
+  }
+  
+  .navbar-collapse {
+    margin-left: auto; /* Push the sign-in/out buttons to the right */
+  }
+  
+  h5 {
+    text-align: center; /* Center align the heading */
+    margin-top: 20px; /* Add some top margin */
+  }
+

@@ -11,14 +11,6 @@ app.use(express.json())
 app.use(cors())
 
 
-// Preflight OPTIONS handler for the submit-request endpoint
-app.options('/submit-request', (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');        
-    res.sendStatus(200);
-});
-
    app.get('/api/data', (req, res) => {
     // Assuming you want to send back some JSON data
     const responseData = {
@@ -91,6 +83,14 @@ async function insertRequest(environmentTypeId, requestDate) {
     `;
     await pool.request().query(insertRequestQuery, [requestId, environmentTypeId, requestDate]);
 }
+
+// Preflight OPTIONS handler for the submit-request endpoint
+app.options('/submit-request', (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');        
+    res.sendStatus(200);
+});
 
 // Start the server
 app.listen(PORT, () => {

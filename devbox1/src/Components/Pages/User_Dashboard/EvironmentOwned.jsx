@@ -2,6 +2,7 @@ import React from 'react';
 import './EnvironmentTable.css'; // Import CSS file for table styling
 
 function EnvironmentTable() {
+    
     return (
         <div className="tables-container">
             <div className="table-wrapper2 new-requests">

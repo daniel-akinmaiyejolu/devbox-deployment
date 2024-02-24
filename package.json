@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "browserify-zlib": "^0.2.0"
+    "browserify-zlib": "^0.2.0",
+    "cors": "^2.8.5"
   }
 }

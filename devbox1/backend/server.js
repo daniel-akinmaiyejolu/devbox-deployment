@@ -1,13 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+var serveStatic = require('serve-static')
+
+
 const { pool } = require('./db');
 
 // const PORT = process.env.PORT || 5000;
 
 // Middleware to parse JSON bodies
+app.use(serveStatic(__dirname + '../build'));
 app.use(express.json())
 app.use(cors())
+
 
 // Define your CORS options
 const corsOptions = {

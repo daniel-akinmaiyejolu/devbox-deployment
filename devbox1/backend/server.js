@@ -1,5 +1,9 @@
 const express = require('express');
 const cors = require('cors');
+const app = express();
+var serveStatic = require('serve-static')
+
+
 const { pool } = require('./db');
 
 const app = express();
@@ -36,8 +40,6 @@ app.use(cors())
     // Sending the JSON response
     res.json(responseData);
   });
-
-
 
 function generateUniqueEnvironmentTypeId() {
     return environmentTypeIdCounter++;

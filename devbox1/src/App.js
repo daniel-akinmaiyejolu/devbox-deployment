@@ -7,12 +7,8 @@ import { ProfileData } from './Components/Login/ProfileData';
 import { FaTrash } from 'react-icons/fa';
 import { FaCog } from 'react-icons/fa';
 import { RequestContextProvider } from './Components/Pages/User_Dashboard/RequestContext';
-
-
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from '@azure/msal-react';
-
 import './App.css';
-
 import Button from 'react-bootstrap/Button';
 import Popup, { RequestForm } from './Components/Pages/User_Dashboard/RequestForm';
 import EnvironmentTable from './Components/Pages/User_Dashboard/EvironmentOwned'
@@ -22,6 +18,9 @@ import { SettingsButton } from './Components/Pages/User_Dashboard/settings';
   /**
 * Renders information about the signed-in user or a button to retrieve data about the user
 */
+
+
+
 const ProfileContent = () => {
   const { instance, accounts } = useMsal();
   const [graphData, setGraphData] = useState(null);
@@ -82,12 +81,8 @@ const UserDashboard = () => {
     );
 };
 
-
-
-
-
 const MainContent = () => {
-  return (
+    return (
       <div className="App">
           <AuthenticatedTemplate>
               {/* <ProfileContent /> */}
@@ -107,6 +102,7 @@ const MainContent = () => {
 
 export default function App() {
     const [graphData, setGraphData] = useState(null);
+
   return (
     <RequestContextProvider>
       <PageNavbar>

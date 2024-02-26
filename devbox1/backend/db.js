@@ -1,5 +1,5 @@
 const sql = require('mssql');
-
+ 
 const dbConfig = {
     user: 'azureuser',
     password: 'Pa55w.rd123',
@@ -13,16 +13,16 @@ const dbConfig = {
         encrypt: true
     }
 }
-
+ 
 const pool = new sql.ConnectionPool(dbConfig);
 const poolConnect = pool.connect();
-
+ 
 poolConnect.then(() => {
     console.log('Connected to the database');
 }).catch((err) => {
     console.error('Error connecting to the database:', err);
 });
-
+ 
 module.exports = {
     pool,
 };

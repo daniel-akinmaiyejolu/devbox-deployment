@@ -36,13 +36,13 @@ app.listen(5000, () => {
 });
 
 
-// // Preflight OPTIONS handler for the submit-request endpoint
-// app.options('/submit-request', (req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type');        
-//     res.sendStatus(200);
-// });
+// Preflight OPTIONS handler for the submit-request endpoint
+app.options('/submit-request', (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');        
+    res.sendStatus(200);
+});
 
    app.get('/api/data', (req, res) => {
     // Assuming you want to send back some JSON data

@@ -5,10 +5,22 @@ const { pool } = require('./db');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+var whitelist = ['http://localhost:3000', 'http://127.0.0.1:3000']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 
 // Middleware to parse JSON bodies
+app.use(cors(corsOptions));
 app.use(express.json())
 app.use(cors())
+
 
 
    app.get('/api/data', (req, res) => {
@@ -42,12 +54,8 @@ app.post('/submit-request', async (req, res) => {
         const { environmentType, tier, service, subscriptionId } = requestData;
         
         const environmentTypeId = generateUniqueEnvironmentTypeId();
-        const requestDate = new Date().toISOString();
-        const environmentTypeDescription = `${tier}; ${service}`;
         
-        await insertEnvironmentType(environmentTypeId, environmentType, environmentTypeDescription);
-        await insertOwnership(environmentTypeId, subscriptionId, requestDate);
-        await insertRequest(environmentTypeId, requestDate);
+        await insertRequest(environmentTypeId, subscriptionId, tier, service);
         
         res.status(200).send('Request submitted successfully!');
     } catch (error) {
@@ -55,34 +63,6 @@ app.post('/submit-request', async (req, res) => {
         res.status(500).send('Internal server error');
     }
 });
-
-// Function to insert environment type into the database
-async function insertEnvironmentType(environmentTypeId, environmentType, environmentTypeDescription) {
-    const insertQuery = `
-        INSERT INTO Environment_Types (EnvironmentType_ID, TypeName, Description)
-        VALUES (?, ?, ?);
-    `;
-    await pool.request().query(insertQuery, [environmentTypeId, environmentType, environmentTypeDescription]);
-}
-
-// Function to insert ownership details into the database
-async function insertOwnership(environmentTypeId, subscriptionId, ownershipStartDate) {
-    const insertOwnershipQuery = `
-        INSERT INTO Environment_Ownership (EnvironmentType_ID, Subscription_ID, OwnershipStartDate, IsActive)
-        VALUES (?, ?, ?, 1);
-    `;
-    await pool.request().query(insertOwnershipQuery, [environmentTypeId, subscriptionId, ownershipStartDate]);
-}
-
-// Function to insert request details into the database
-async function insertRequest(environmentTypeId, requestDate) {
-    const requestId = generateUniqueRequestId();
-    const insertRequestQuery = `
-        INSERT INTO Request_Details (Request_ID, EnvironmentType_ID, RequestDate, ApprovalStatus)
-        VALUES (?, ?, ?, 'pending');
-    `;
-    await pool.request().query(insertRequestQuery, [requestId, environmentTypeId, requestDate]);
-}
 
 // Preflight OPTIONS handler for the submit-request endpoint
 app.options('/submit-request', (req, res, next) => {
@@ -96,3 +76,4 @@ app.options('/submit-request', (req, res, next) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:5000`);
 });
+

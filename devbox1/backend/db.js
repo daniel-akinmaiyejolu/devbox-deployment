@@ -1,11 +1,11 @@
 const sql = require('mssql');
 
 const dbConfig = {
-    user: '4dm1n157r470r',
-    password: 'p455w.rd',
-    server: 'inspire-sql-server-new.database.windows.net',
+    user: 'azureuser',
+    password: 'Pa55w.rd123',
+    server: 'pipelineinspiresql2.database.windows.net',
     port: 1433,
-    database: 'inspire-database-new',
+    database: 'pipelineinspiredb2',
     authentication: {
         type: 'default'
     },
